@@ -3,13 +3,14 @@
     <v-card-item>
       <v-card-title class="mb-4">Login</v-card-title>
       <v-form fast-fail @submit.prevent="login">
-        <v-text-field :class="{ 'invalid': $v.email.$error }" v-model="form.email" label="Email" />
+        <v-text-field type="text" autocomplete="username" :class="{ 'invalid': $v.email.$error }" v-model="form.email"
+          label="Email" />
         <template v-if="$v.$error">
           <p class="invalid-message" v-if="$v.email.required.$invalid">Email is required</p>
           <p class="invalid-message" v-else-if="$v.email.email.$invalid">Email format is wrong</p>
         </template>
-        <v-text-field type="password" :class="{ 'invalid': $v.password.$error }" v-model="form.password"
-          label="Password" />
+        <v-text-field type="password" autocomplete="current-password" :class="{ 'invalid': $v.password.$error }"
+          v-model="form.password" label="Password" />
         <template v-if="$v.$error">
           <p class="invalid-message" v-if="$v.password.required.$invalid">Password is required</p>
           <p class="invalid-message" v-else-if="$v.password.minLength.$invalid">Password should contain at least 6
